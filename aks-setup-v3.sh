@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -xeo pipefail
+# set -xeo pipefail
 
 rm -f ~/.kube/config
 
@@ -13,13 +13,15 @@ ADMIN=${ADMIN:-true}
 
 PRIVATE=${PRIVATE:-true}
 
+K9S=${K9S:-true}
+
 export KUBECONFIG=${KUBECONFIG:-"$HOME/.kube/config"}
 
 # set +x
-# az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 5d471751-9675-428d-917b-70f44f9630b0
+az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 5d471751-9675-428d-917b-70f44f9630b0
 # set -xeuo pipefail
 
-test ! -z \"$SUBSCRIPTION_NAME\" && az account set --name "$SUBSCRIPTION_NAME"
+test ! -z $SUBSCRIPTION_NAME && az account set --name "$SUBSCRIPTION_NAME"
 test ! -z $SUBSCRIPTION_ID && az account set --subscription "$SUBSCRIPTION_ID"
 
 if $ADMIN
@@ -44,3 +46,11 @@ fi
 kubectl cluster-info
 
 set +x
+
+if K9S
+then
+  wget -q https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz
+  tar zxvf k9s_Linux_amd64.tar.gz
+  chmod +x k9s
+  export PATH=$PATH:~/
+fi
