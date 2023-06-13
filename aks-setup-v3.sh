@@ -47,7 +47,7 @@ kubectl cluster-info
 
 set +x
 
-if K9S
+if $K9S
 then
   wget -q https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz
   tar zxvf k9s_Linux_amd64.tar.gz
