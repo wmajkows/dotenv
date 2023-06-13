@@ -45,12 +45,12 @@ fi
 
 kubectl cluster-info
 
-set +x
+# set +x
 
 if $K9S
 then
   wget -q https://github.com/derailed/k9s/releases/download/v0.27.4/k9s_Linux_amd64.tar.gz
-  tar zxvf k9s_Linux_amd64.tar.gz
+  tar zxvf k9s_Linux_amd64.tar.gz > /dev/null
   chmod +x k9s
-  export PATH=$PATH:~/
+  # export PATH=$PATH:~/
 fi
