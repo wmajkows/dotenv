@@ -19,7 +19,7 @@ export KUBECONFIG=${KUBECONFIG:-"$HOME/.kube/config"}
 # az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 5d471751-9675-428d-917b-70f44f9630b0
 # set -xeuo pipefail
 
-test ! -z "$SUBSCRIPTION_NAME" && az account set --name "$SUBSCRIPTION_NAME"
+test ! -z "${SUBSCRIPTION_NAME}" && az account set --name "$SUBSCRIPTION_NAME"
 test ! -z $SUBSCRIPTION_ID && az account set --subscription "$SUBSCRIPTION_ID"
 
 if $ADMIN
