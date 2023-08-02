@@ -31,7 +31,7 @@ else
   az aks get-credentials --name $AKS_NAME --resource-group $AKS_RG -f $KUBECONFIG --overwrite-existing
 fi
 
-az account set --name "NHC AZURE CNS SaaS DEV C 1 outside"
+az account set --subscription "6d7d561b-2a90-46eb-9828-58554d48ebda"
 
 if $PRIVATE
 then
