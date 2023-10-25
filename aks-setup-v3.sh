@@ -13,7 +13,7 @@ ADMIN=${ADMIN:-true}
 
 PRIVATE=${PRIVATE:-true}
 
-K9S=${K9S:-true}
+K9S=${K9S:-false}
 
 export KUBECONFIG=${KUBECONFIG:-"$HOME/.kube/config"}
 
