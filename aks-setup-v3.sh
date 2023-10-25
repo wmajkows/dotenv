@@ -18,7 +18,7 @@ K9S=${K9S:-false}
 export KUBECONFIG=${KUBECONFIG:-"$HOME/.kube/config"}
 
 # set +x
-az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant 5d471751-9675-428d-917b-70f44f9630b0 > /dev/null
+az login --service-principal -u $ARM_CLIENT_ID -p $ARM_CLIENT_SECRET --tenant $TENANT_ID > /dev/null
 # set -xeuo pipefail
 
 test ! -z $SUBSCRIPTION_NAME && az account set --name "$SUBSCRIPTION_NAME"
@@ -31,7 +31,7 @@ else
   az aks get-credentials --name $AKS_NAME --resource-group $AKS_RG -f $KUBECONFIG --overwrite-existing
 fi
 
-az account set --subscription "6d7d561b-2a90-46eb-9828-58554d48ebda"
+az account set --subscription $AGENTS_SUBSCRIPTION_ID
 
 if $PRIVATE
 then
