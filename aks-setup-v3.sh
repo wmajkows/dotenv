@@ -11,7 +11,7 @@ PE_NAME=${PE_NAME:-"$AKS_NAME-kube-apiserver"}
 
 ADMIN=${ADMIN:-true}
 
-PRIVATE=${PRIVATE:-true}
+PRIVATE=${PRIVATE:-false}
 
 K9S=${K9S:-false}
 
